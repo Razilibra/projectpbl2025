@@ -7,51 +7,48 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Jalankan migrasi.
      */
     public function up(): void
     {
-        Schema::table('dosen_staff', function (Blueprint $table) {
+        // Tidak ada perubahan langsung pada tabel 'dosen_staff', jadi tidak ada perubahan dalam blueprint
 
-        });
-
-        // Add foreign key constraint  peminjaman table
+        // Tambahkan kunci asing ke tabel 'peminjaman'
         Schema::table('peminjaman', function (Blueprint $table) {
+            // Mengubah kolom 'penanggung_jawab' menjadi nullable dan menambahkan kunci asing
             $table->unsignedBigInteger('penanggung_jawab')->nullable()->change();
             $table->foreign('penanggung_jawab')
                   ->references('nip_nik')
                   ->on('dosen_staff')
-                  ->onDelete('cascade');
+                  ->onDelete('cascade'); // Saat dosen_staff dihapus, peminjaman juga akan dihapus
         });
 
-        // Add foreign key constraint to the pengembalian table
+        // Tambahkan kunci asing ke tabel 'pengembalian'
         Schema::table('pengembalian', function (Blueprint $table) {
+            // Mengubah kolom 'penanggung_jawab' menjadi nullable dan menambahkan kunci asing
             $table->unsignedBigInteger('penanggung_jawab')->nullable()->change();
             $table->foreign('penanggung_jawab')
                   ->references('nip_nik')
                   ->on('dosen_staff')
-                  ->onDelete('cascade');
+                  ->onDelete('cascade'); // Saat dosen_staff dihapus, pengembalian juga akan dihapus
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Rollback migrasi.
      */
     public function down(): void
     {
-        // Remove foreign key constraint dari  peminjaman table
+        // Hapus kunci asing dari tabel 'peminjaman'
         Schema::table('peminjaman', function (Blueprint $table) {
             $table->dropForeign(['penanggung_jawab']);
         });
 
-        // Remove foreign key constraint dari pengembalian table
+        // Hapus kunci asing dari tabel 'pengembalian'
         Schema::table('pengembalian', function (Blueprint $table) {
             $table->dropForeign(['penanggung_jawab']);
         });
 
-
-        Schema::table('dosen_staff', function (Blueprint $table) {
-
-        });
+        // Tidak ada perubahan langsung pada tabel 'dosen_staff', jadi tidak ada perubahan dalam blueprint
     }
 };

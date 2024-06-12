@@ -6,8 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateLogTable extends Migration
 {
+    /**
+     * Jalankan migrasi.
+     *
+     * @return void
+     */
     public function up()
     {
+        // Membuat tabel 'log'
         Schema::create('log', function (Blueprint $table) {
             $table->id('id_log');
             $table->foreignId('id_user')->constrained('users', 'id_user');
@@ -19,8 +25,14 @@ class CreateLogTable extends Migration
         });
     }
 
+    /**
+     * Rollback migrasi.
+     *
+     * @return void
+     */
     public function down()
     {
+        // Hapus tabel 'log' jika migrasi di-rollback
         Schema::dropIfExists('log');
     }
 }

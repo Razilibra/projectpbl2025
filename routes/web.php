@@ -20,6 +20,7 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
+
 //Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
