@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+// Mengimpor trait dan kelas yang dibutuhkan
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

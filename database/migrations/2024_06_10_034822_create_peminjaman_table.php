@@ -1,5 +1,3 @@
-
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -38,14 +36,8 @@ class CreatePeminjamanTable extends Migration
      * @return void
      */
     public function down()
-{
-
-
-    Schema::disableForeignKeyConstraints();
-    Schema::dropIfExists('peminjaman');
-    Schema::enableForeignKeyConstraints();
-
-
-}
-
+    {
+        // Hapus tabel 'peminjaman' jika migrasi di-rollback
+        Schema::dropIfExists('peminjaman');
+    }
 }

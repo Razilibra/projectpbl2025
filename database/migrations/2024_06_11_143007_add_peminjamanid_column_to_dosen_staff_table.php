@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -15,7 +14,7 @@ return new class extends Migration
         // Tidak ada perubahan langsung pada tabel 'dosen_staff', jadi tidak ada perubahan dalam blueprint
 
         // Tambahkan kunci asing ke tabel 'peminjaman'
-        Schema::table('Peminjaman', function (Blueprint $table) {
+        Schema::table('peminjaman', function (Blueprint $table) {
             // Mengubah kolom 'penanggung_jawab' menjadi nullable dan menambahkan kunci asing
             $table->unsignedBigInteger('penanggung_jawab')->nullable()->change();
             $table->foreign('penanggung_jawab')

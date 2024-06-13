@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,6 +29,6 @@ class BarangKeluar extends Model
     // Mendefinisikan relasi 'belongsTo' dengan model Peminjaman
     public function peminjaman()
     {
-        return $this->belongsTo(peminjaman::class, 'id_peminjaman', 'id_peminjaman');
+        return $this->belongsTo(Peminjaman::class, 'id_peminjaman', 'id_peminjaman');
     }
 }
